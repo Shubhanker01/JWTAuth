@@ -1,0 +1,8 @@
+body{
+    margin: 0;
+    height: 100vh;
+}
+#root{
+    background-color: rgb(211, 211, 56);
+    height: 100%;
+}
