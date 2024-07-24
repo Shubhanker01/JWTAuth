@@ -1,23 +1,15 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
-const jwt = require('jsonwebtoken')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 require('dotenv').config()
-
 const port = 3000
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
+const user = require('../server/routes/user')
 
-app.post('/signup', function (req, res) {
-    try {
-
-    } catch (error) {
-        console.log(error)
-    }
-})
-
+app.use('/',user)
 async function main() {
     await mongoose.connect(process.env.URI)
 }

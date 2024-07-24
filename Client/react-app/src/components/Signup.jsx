@@ -7,6 +7,7 @@ const Signup = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confPassword, setconfPassword] = useState("")
+
     const formSend = async (e) => {
         e.preventDefault()
         let headersList = {
@@ -22,13 +23,17 @@ const Signup = () => {
             });
 
             let data = await response.text();
-            console.log(data)
+            StatusAlertService.showSuccess(data)
+            setUsername("")
+            setEmail("")
+            setPassword("")
+            setconfPassword("")
         }
         else {
             StatusAlertService.showError("Password not matched")
         }
-
     }
+    
     return (
         <>
             <div className="signup-form">
