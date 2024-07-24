@@ -6,24 +6,28 @@ const Signup = () => {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [confPassword,setconfPassword] = useState("")
+    const [confPassword, setconfPassword] = useState("")
     const formSend = async (e) => {
         e.preventDefault()
         let headersList = {
             "Accept": "*/*",
             "Content-Type": "application/x-www-form-urlencoded"
         }
-        
         let bodyContent = `username=${username}&email=${email}&password=${password}`;
+        if (password == confPassword) {
+            let response = await fetch("http://localhost:3000/signup", {
+                method: "POST",
+                body: bodyContent,
+                headers: headersList
+            });
 
-        let response = await fetch("http://localhost:3000/signup", {
-            method: "POST",
-            body: bodyContent,
-            headers: headersList
-        });
+            let data = await response.text();
+            console.log(data)
+        }
+        else {
+            StatusAlertService.showError("Password not matched")
+        }
 
-        let data = await response.text();
-        StatusAlertService.showSuccess(data)
     }
     return (
         <>
@@ -66,7 +70,7 @@ const Signup = () => {
                                 <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2M2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
                             </svg>
                         </label>
-                        <input type="password" placeholder="Confirm Password" id="confirm-password" name="confirm-password" onChange={(e)=>{setconfPassword(e.target.value)}} value={confPassword} required></input>
+                        <input type="password" placeholder="Confirm Password" id="confirm-password" name="confirm-password" onChange={(e) => { setconfPassword(e.target.value) }} value={confPassword} required></input>
                     </div>
 
                     <br></br>
