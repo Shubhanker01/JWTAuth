@@ -15,7 +15,7 @@ const Login = () => {
             "Content-Type": "application/x-www-form-urlencoded"
         }
         let bodyContent = `email=${email}&password=${password}`;
-        let response = await fetch("http://localhost:3000/login", {
+        let response = await fetch("https://jwtauthbackend-62mq.onrender.com/login", {
             method: "POST",
             body: bodyContent,
             headers: headersList

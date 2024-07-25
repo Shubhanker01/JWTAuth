@@ -9,7 +9,7 @@ const Redirect = () => {
             "Authorization": `Bearer ${document.getElementById('tokeninp').value}`
         }
 
-        let response = await fetch("http://localhost:3000/getuserinfo", {
+        let response = await fetch("https://jwtauthbackend-62mq.onrender.com/getuserinfo", {
             method: "GET",
             headers: headersList
         });
