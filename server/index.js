@@ -10,6 +10,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 const user = require('../server/routes/user')
 
 app.use('/', user)
+app.get('/',function(req,res){
+    res.send("hello world")
+})
 async function main() {
     await mongoose.connect(process.env.URI)
 }
