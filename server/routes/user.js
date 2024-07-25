@@ -48,7 +48,7 @@ router.post('/login', async function (req, res) {
                 username: userData.username,
                 email: userData.email
             }
-            jwt.sign(data, process.env.SECRET, { expiresIn: 60 }, function (err, token) {
+            jwt.sign(data, process.env.SECRET, { expiresIn: 30 }, function (err, token) {
                 res.send({ message: "Success", accessToken: token })
             })
         }
