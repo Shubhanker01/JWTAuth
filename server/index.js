@@ -9,7 +9,7 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 const user = require('../server/routes/user')
 
-app.use('/',user)
+app.use('/', user)
 async function main() {
     await mongoose.connect(process.env.URI)
 }

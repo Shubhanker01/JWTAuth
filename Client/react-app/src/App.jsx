@@ -4,6 +4,8 @@ import "../src/App.css"
 import Login from "./components/Login"
 import StatusAlert from 'react-status-alert'
 import 'react-status-alert/dist/status-alert.css'
+import Redirect from "./components/Redirect"
+import MainApp from "./components/MainApp"
 function App() {
 
 
@@ -14,6 +16,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Signup />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/redirect" element={<Redirect/>}></Route>
+          <Route path="/main-app" element={<MainApp/>}></Route>
         </Routes>
       </Router>
 
