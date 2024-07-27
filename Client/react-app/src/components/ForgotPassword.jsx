@@ -19,7 +19,7 @@ const ForgotPassword = () => {
                
                let bodyContent = `email=${email}&password=${password}`;
                
-               let response = await fetch("http://localhost:3000/forgotpassword", { 
+               let response = await fetch("https://jwtauthbackend-62mq.onrender.com/forgotpassword", { 
                  method: "POST",
                  body: bodyContent,
                  headers: headersList

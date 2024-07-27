@@ -14,7 +14,7 @@ const Profile = () => {
                 "Authorization": `Bearer ${localStorage.getItem("refreshToken")}`
             }
 
-            let response = await fetch("http://localhost:3000/userprofile", {
+            let response = await fetch("https://jwtauthbackend-62mq.onrender.com/userprofile", {
                 method: "GET",
                 headers: headersList
             });

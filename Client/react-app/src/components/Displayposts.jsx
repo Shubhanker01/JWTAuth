@@ -12,7 +12,7 @@ const Displayposts = () => {
         "Authorization": `Bearer ${localStorage.getItem("refreshToken")}`
       }
 
-      let response = await fetch("http://localhost:3000/getposts", {
+      let response = await fetch("https://jwtauthbackend-62mq.onrender.com/getposts", {
         method: "GET",
         headers: headersList
       });

@@ -15,7 +15,7 @@ const Post = ({ caption, description, likes, id }) => {
         }
         let bodyContent = `caption=${updateTitle}&description=${updateDescription}`;
 
-        let response = await fetch(`http://localhost:3000/update/${id}`, {
+        let response = await fetch(`https://jwtauthbackend-62mq.onrender.com/update/${id}`, {
             method: "POST",
             body: bodyContent,
             headers: headersList
@@ -29,7 +29,7 @@ const Post = ({ caption, description, likes, id }) => {
         let headersList = {
             "Accept": "*/*"
         }
-        let response = await fetch(`http://localhost:3000/delete/${id}`, {
+        let response = await fetch(`https://jwtauthbackend-62mq.onrender.com/delete/${id}`, {
             method: "DELETE",
             headers: headersList
         });
@@ -44,7 +44,7 @@ const Post = ({ caption, description, likes, id }) => {
                 "Accept": "*/*"
             }
 
-            let response = await fetch(`http://localhost:3000/likes/${id}`, {
+            let response = await fetch(`https://jwtauthbackend-62mq.onrender.com/likes/${id}`, {
                 method: "POST",
                 headers: headersList
             });
@@ -58,7 +58,7 @@ const Post = ({ caption, description, likes, id }) => {
             let headersList = {
                 "Accept": "*/*"
             }
-            let response = await fetch(`http://localhost:3000/unlike/${id}`, {
+            let response = await fetch(`https://jwtauthbackend-62mq.onrender.com/unlike/${id}`, {
                 method: "POST",
                 headers: headersList
             });
@@ -76,7 +76,7 @@ const Post = ({ caption, description, likes, id }) => {
             "Content-Type": "application/x-www-form-urlencoded"
         }
         let bodyContent = `comment=${individualComment}`;
-        let response = await fetch(`http://localhost:3000/comments/${id}`, {
+        let response = await fetch(`https://jwtauthbackend-62mq.onrender.com/comments/${id}`, {
             method: "POST",
             body: bodyContent,
             headers: headersList

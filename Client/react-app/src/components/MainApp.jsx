@@ -13,13 +13,12 @@ const MainApp = () => {
         else {
             let headersList = {
                 "Accept": "*/*",
-                "User-Agent": "Thunder Client (https://www.thunderclient.com)",
                 "Content-Type": "application/x-www-form-urlencoded"
             }
 
             let bodyContent = `caption=${caption}&description=${description}&token=${localStorage.getItem("refreshToken")}`;
 
-            let response = await fetch("http://localhost:3000/post", {
+            let response = await fetch("https://jwtauthbackend-62mq.onrender.com/post", {
                 method: "POST",
                 body: bodyContent,
                 headers: headersList

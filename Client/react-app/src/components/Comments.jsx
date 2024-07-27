@@ -8,7 +8,7 @@ const Comments = ({ id }) => {
                 "Accept": "*/*"
             }
 
-            let response = await fetch(`http://localhost:3000/showcomments/${id}`, {
+            let response = await fetch(`https://jwtauthbackend-62mq.onrender.com/showcomments/${id}`, {
                 method: "GET",
                 headers: headersList
             });
