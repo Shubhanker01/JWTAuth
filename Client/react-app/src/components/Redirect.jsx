@@ -9,18 +9,21 @@ const Redirect = () => {
             "Authorization": `Bearer ${document.getElementById('tokeninp').value}`
         }
 
-        let response = await fetch("https://jwtauthbackend-62mq.onrender.com/getuserinfo", {
+        let response = await fetch("http://localhost:3000/getuserinfo", {
             method: "GET",
             headers: headersList
         });
         if (response.status == 403 || response.status == 401) {
             let data = await response.text();
             StatusAlertService.showError(data)
-            localStorage.removeItem("secret")
+            localStorage.removeItem("token")
         }
         else {
             let data = await response.json()
-            navigate('/main-app', { state: data })
+            navigate('/main-app')
+            console.log(data.refreshToken)
+            localStorage.setItem("refreshToken", data.refreshToken)
+            localStorage.removeItem("token")
             StatusAlertService.showSuccess("Successfully logged in")
         }
 

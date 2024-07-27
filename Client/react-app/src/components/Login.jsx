@@ -15,14 +15,14 @@ const Login = () => {
             "Content-Type": "application/x-www-form-urlencoded"
         }
         let bodyContent = `email=${email}&password=${password}`;
-        let response = await fetch("https://jwtauthbackend-62mq.onrender.com/login", {
+        let response = await fetch("http://localhost:3000/login", {
             method: "POST",
             body: bodyContent,
             headers: headersList
         });
         if (response.status == 403) {
-            let data = await response.json()
-            StatusAlertService.showError(data.message)
+            let data = await response.text()
+            StatusAlertService.showError(data)
         }
         else {
             let data = await response.json();
@@ -63,6 +63,7 @@ const Login = () => {
                     <button type="submit">Login</button>
                     <br></br>
                     <p>New User? Go To <Link to="/">Registration</Link></p>
+                    <p>Forgot password? Go to <Link to="/forgot-password">Forgot Password</Link></p>
                 </form>
             </div>
         </>

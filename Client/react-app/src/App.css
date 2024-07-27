@@ -1,8 +1,9 @@
-.signup-form{
+.signup-form {
   display: block;
   text-align: center;
 }
-form{
+
+form {
   display: inline-block;
   margin-left: auto;
   margin-right: auto;
@@ -12,7 +13,8 @@ form{
   margin-top: 100px;
   border-radius: 10px;
 }
-form h1{
+
+form h1 {
   font-size: 25px;
   text-align: center;
   color: rgb(27, 24, 24);
@@ -24,36 +26,41 @@ form h1{
   padding-top: 10px;
   font-weight: bolder;
 }
-form div{
+
+form div {
   height: 40px;
   display: flex;
 }
 
-form div label{
+form div label {
   display: inline-block;
   background-color: rgb(212, 212, 45);
   margin-left: 25px;
   padding: 3px;
-  border-top-left-radius:5px;
+  border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
-form div input{
+
+form div input {
   display: inline-block;
   height: 35px;
   background-color: rgb(36, 33, 33);
   border: 2px solid rgb(73, 70, 70);
-  border-top-right-radius:5px;
+  border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   color: azure;
   width: 250px;
 }
-form div input:focus{
+
+form div input:focus {
   outline: none;
 }
-form div h1{
+
+form div h1 {
   margin-top: -5px;
 }
-form button{
+
+form button {
   background-color: rgb(212, 212, 45);
   color: rgb(36, 33, 33);
   border: none;
@@ -66,28 +73,76 @@ form button{
   border-radius: 5px;
   cursor: pointer;
 }
-form p{
+
+form p {
   text-align: center;
   color: azure;
 }
-form p a{
+
+form p a {
   text-decoration: none;
   color: rgb(212, 212, 45);
 }
-.redirect-div{
-  background-color:  rgb(30 41 59);
-  height: 100vh;
+
+.redirect-div {
+  background-color: rgb(30 41 59);
+  height: 100%;
   color: rgb(248 250 252);
   text-align: center;
   display: block;
 }
-.redirect-div p{
+
+.redirect-div p {
   padding-top: 30px;
   font-size: 25px;
 }
-.inputgp{
+
+.inputgp {
   display: inline-block;
   margin-left: auto;
   margin-right: auto;
   width: 75%;
+}
+
+.main {
+  background-color: rgb(15 23 42);
+  height: 100%;
+  color: rgb(226 232 240);
+  width: 100%;
+}
+
+.main h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.add-post {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.add-post input {
+  background-color: rgb(226 232 240);
+}
+
+.add-post textarea {
+  background-color: rgb(226 232 240);
+}
+
+.profile {
+  width: 50%;
+  margin: 100px auto;
+}
+
+.main-p {
+  margin: 0 auto;
+}
+
+
+.main-1{
+  background-color: rgb(15 23 42);
+  height: 100%;
+  color: rgb(226 232 240);
+  width: 100%;
+  overflow-y: scroll;
 }

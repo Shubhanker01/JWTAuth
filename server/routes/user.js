@@ -31,12 +31,43 @@ router.post('/signup', async function (req, res) {
 
 router.get('/getuserinfo', authenticateToken, function (req, res) {
     try {
-        res.send(req.user)
+        jwt.sign(req.user.id, process.env.SECRET, function (err, token) {
+            res.send({ user: req.user, refreshToken: token })
+        })
+
     }
     catch (err) {
         console.log(err)
     }
 })
+
+// use refreshtoken to get user info
+router.get('/userprofile', async (req, res) => {
+    try {
+        const authHeader = req.headers['authorization']
+        const token = authHeader && authHeader.split(' ')[1]
+        let response = jwt.verify(token, process.env.SECRET, function (err, user) {
+            if (err) {
+                return "Invalid Authorization"
+            }
+            else {
+
+                return user
+
+            }
+        })
+        if (response == "Invalid Authorization") {
+            res.status(403).send(response)
+        }
+        else {
+            let data = await user.findById(response)
+            res.send(data)
+        }
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 
 // login
 router.post('/login', async function (req, res) {
@@ -45,6 +76,7 @@ router.post('/login', async function (req, res) {
         let comp = bcrypt.compareSync(req.body.password, userData.password)
         if (comp == true) {
             let data = {
+                id: userData._id,
                 username: userData.username,
                 email: userData.email
             }
@@ -53,11 +85,29 @@ router.post('/login', async function (req, res) {
             })
         }
         else {
-            res.status(403).send({message:"Invalid User or password is wrong"})
+            res.status(403).send("Invalid Password or Email is wrong")
         }
     }
     catch (err) {
         console.log(err)
+    }
+})
+
+// forgot password
+router.post('/forgotpassword',async(req,res)=>{
+    try {
+        let data = await user.findOne({email:req.body.email})
+        if(data==null){
+            res.status(403).send("Invalid User could not find email")
+        }
+        else{
+            const hash = bcrypt.hashSync(req.body.password,saltRounds)
+            data.password = hash
+            await data.save()
+            res.send("Your password is reset successfully Go to login")
+        }
+    } catch (error) {
+        console.log(error)
     }
 })
 
@@ -67,7 +117,7 @@ function authenticateToken(req, res, next) {
     if (token == null) return res.sendStatus(401)
     jwt.verify(token, process.env.SECRET, function (err, user) {
         if (err) {
-            return res.sendStatus(403)
+            return res.status(403).send("Token is expired Login again!!!")
         }
         req.user = user
     })

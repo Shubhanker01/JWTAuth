@@ -8,8 +8,10 @@ const port = 3000
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 const user = require('../server/routes/user')
+const posts = require('../server/routes/post')
 
 app.use('/', user)
+app.use('/',posts)
 app.get('/',function(req,res){
     res.send("hello world")
 })

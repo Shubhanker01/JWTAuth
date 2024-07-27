@@ -16,7 +16,7 @@ const Signup = () => {
         }
         let bodyContent = `username=${username}&email=${email}&password=${password}`;
         if (password == confPassword) {
-            let response = await fetch("https://jwtauthbackend-62mq.onrender.com/signup", {
+            let response = await fetch("http://localhost:3000/signup", {
                 method: "POST",
                 body: bodyContent,
                 headers: headersList
