@@ -21,7 +21,6 @@ const Redirect = () => {
         else {
             let data = await response.json()
             navigate('/main-app')
-            console.log(data.refreshToken)
             localStorage.setItem("refreshToken", data.refreshToken)
             localStorage.removeItem("token")
             StatusAlertService.showSuccess("Successfully logged in")
